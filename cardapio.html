@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio - VegLanches</title>
+    <link rel="stylesheet" href="style-cardapio.css">
+    <script src="script-cardapio.js" defer></script>
+</head>
+
+<body>
+
+    <div id="fadeAlert" class="hide"></div>
+    <div id="modalAlert" class="hide">
+        <p>Nenhum item foi adicionado ao carrinho.</p>
+        <button id="fecharAlert">OK</button>
+    </div>
+
+    <div id="fade" class="hide"></div>
+    <div id="modal" class="hide">
+        <img class="logoModal" src="img/logo.png" alt="">
+
+        <h3>Pagamento realizado com sucesso!</h3>
+
+        <p>Logo, logo você estará aproveitando o seu pedido ;)</p>
+        <p>O Sonho Vegano agradece a sua preferência!</p>
+
+        <button id="fechar">x</button>
+
+    </div>
+
+    <header>
+        <img id="logo" src="img/logo.png" alt="">
+
+        <img id="cardapioImg" src="img/cardapio.png" alt="">
+    </header>
+
+    <main>
+        <section class="cardapio">
+            <button id="botaoEsquerdo"><img src="" alt=""><</button>
+
+            <div class="slideCardapio">
+
+                <div id="paginas">
+                    <div class="pagina" id="lanches">
+                        <img class="imgSection" src="img/lanches.png" alt="">
+
+                        <div class="lanche" id="lanche1">
+                            
+                            <div class="descrição">
+                                <h2>Sonho Vegano (porção com 3)</h2>
+                                <p>Nosso preferido tem uma massa leve e deliciosa que é feita com leite de coco caseiro e o recheio é à base de creme de castanha de caju.</p>
+
+                            </div>
+
+                            <div class="preço">
+                                <h3>R$ 11,90</h3>
+                                
+                                <div class="quantidade">
+                                    <p>Quantidade</p>
+                                    <div class="numero">
+                                        <button id="menosSonho">-<img src="" alt=""></button>
+                                        <input type="text" id="qtdSonho" class="qtd" value="0" readonly>
+                                        <button id="maisSonho">+<img src="" alt=""></button>                                         
+                                    </div>                           
+                                </div>
+
+                                <button class="adicionar" id="sonho">Adicionar</button>
+                            </div>
+                        </div>
+
+                        <div class="lanche" id="lanche2">
+
+                            <div class="descrição">
+                                <h2>Croissant de Chocolate</h2>
+                                <p>Uma massa folhada crocante recheada com chocolate.</p>
+                            </div>
+
+                            <div class="preço">
+                                <h3>R$ 12,90</h3>
+                                
+                                <div class="quantidade">
+                                    <p>Quantidade</p>
+                                    <div class="numero">
+                                        <button id="menosCroissant">-<img src="" alt=""></button>
+                                        <input type="text" id="qtdCroissant" class="qtd" value="0" readonly>
+                                        <button id="maisCroissant">+<img src="" alt=""></button>                                         
+                                    </div>                           
+                                </div>
+
+                                <button class="adicionar" id="croissant">Adicionar</button>
+                            </div>
+                        </div>
+
+                        <div class="lanche" id="lanche3">
+
+                            <div class="descrição">
+                                <h2>Cinnamon Roll</h2>
+                                <p>Delicioso rolinho de canela com açúcar mascavo.</p>
+                            </div>
+
+                            <div class="preço">
+                                <h3>R$ 10,90</h3>
+                                
+                                <div class="quantidade">
+                                    <p>Quantidade</p>
+                                    <div class="numero">
+                                        <button id="menosCinnamon">-<img src="" alt=""></button>
+                                        <input type="text" id="qtdCinnamon" class="qtd" value="0" readonly>
+                                        <button id="maisCinnamon">+<img src="" alt=""></button>                                         
+                                    </div>                           
+                                </div>
+
+                                <button class="adicionar" id="cinnamon">Adicionar</button>
+                            </div>
+                        </div>
+
+                        <div class="lanche" id="lanche4">
+
+                            <div class="descrição">
+                                <h2>Bolo de Cenoura c/ Cobertura de Chocolate (porção individual)</h2>
+                                <p>Tão macio quanto o tradicional, sua massa leva trigo, cenoura, óleo de canola, açúcar demerara e fermento químico.</p>
+                            </div>
+
+                            <div class="preço">
+                                <h3>R$ 11,90</h3>
+                                
+                                <div class="quantidade">
+                                    <p>Quantidade</p>
+                                    <div class="numero">
+                                        <button id="menosBolo">-<img src="" alt=""></button>
+                                        <input type="text" id="qtdBolo" class="qtd" value="0" readonly>
+                                        <button id="maisBolo">+<img src="" alt=""></button>                                         
+                                    </div>                           
+                                </div>
+
+                                <button class="adicionar" id="bolo">Adicionar</button>
+                            </div>
+                        </div>
+
+                        <div class="lanche" id="lanche5">
+
+                            <div class="descrição">
+                                <h2>Pão de Queijo de Castanha (porção com 3)</h2>
+                                <p>Fofinho feito com batata inglesa e queijo de castanha de caju.</p>
+                            </div>
+
+                            <div class="preço">
+                                <h3>R$ 8,90</h3>
+                                
+                                <div class="quantidade">
+                                    <p>Quantidade</p>
+                                    <div class="numero">
+                                        <button id="menosPao">-<img src="" alt=""></button>
+                                        <input type="text" id="qtdPao" class="qtd" value="0" readonly>
+                                        <button id="maisPao">+<img src="" alt=""></button>                                         
+                                    </div>                           
+                                </div>
+
+                                <button class="adicionar" id="pao-de-queijo">Adicionar</button>
+                            </div>
+                        </div>
+
+                        <div class="lanche" id="lanche6">
+
+                            <div class="descrição">
+                                <h2>Coxinha de Jaca (60g)</h2>
+                                <p>Uma massa leve de trigo e batata inglesa recheada com carne desfiada de jaca.</p>
+                            </div>
+
+                            <div class="preço">
+                                <h3>R$ 8,90</h3>
+                                
+                                <div class="quantidade">
+                                    <p>Quantidade</p>
+                                    <div class="numero">
+                                        <button id="menosCoxinha">-<img src="" alt=""></button>
+                                        <input type="text" id="qtdCoxinha" class="qtd" value="0" readonly>
+                                        <button id="maisCoxinha">+<img src="" alt=""></button>                                         
+                                    </div>                           
+                                </div>
+
+                                <button class="adicionar" id="coxinha">Adicionar</button>
+                            </div>
+                        </div>
+
+                        <div class="lanche" id="lanche7">
+
+                            <div class="descrição">
+                                <h2>Quiche de Shimeji</h2>
+                                <p>Massa feita à base de trigo e recheado com cogumelo shimeji, cenoura e queijo de castanha de caju.</p>
+                            </div>
+
+                            <div class="preço">
+                                <h3>R$ 12,90</h3>
+                                
+                                <div class="quantidade">
+                                    <p>Quantidade</p>
+                                    <div class="numero">
+                                        <button id="menosQuiche">-<img src="" alt=""></button>
+                                        <input type="text" id="qtdQuiche" class="qtd" value="0" readonly>
+                                        <button id="maisQuiche">+<img src="" alt=""></button>                                         
+                                    </div>                           
+                                </div>
+
+                                <button class="adicionar" id="quiche">Adicionar</button>
+                            </div>
+                        </div>
+
+                        <div class="lanche" id="lanche8">
+
+                            <div class="descrição">
+                                <h2>Queijo Quente</h2>
+                                <p>Pão recheado com queijo de castanha de caju, tomate, páprica defumada e pesto de manjericão.</p>
+                            </div>
+
+                            <div class="preço">
+                                <h3>R$ 8,90</h3>
+                                
+                                <div class="quantidade">
+                                    <p>Quantidade</p>
+                                    <div class="numero">
+                                        <button id="menosQueijo">-<img src="" alt=""></button>
+                                        <input type="text" id="qtdQueijo" class="qtd" value="0" readonly>
+                                        <button id="maisQueijo">+<img src="" alt=""></button>                                         
+                                    </div>                           
+                                </div>
+
+                                <button class="adicionar" id="queijo-quente">Adicionar</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="pagina" id="bebidas">
+                        <img class="imgSection" src="img/bebidas.png" alt="">
+
+                        <div class="temperatura">
+                            <div class="quentes">
+
+                                <div class="bebida" id="bebida1">
+                                    
+                                    <div class="titulo-preço">
+                                        <h2>Café c/ leite (200ml)</h2>
+                                        <h3>R$ 10,50</h3>
+                                    </div>
+                                        
+                                    <div class="quantidade">
+                                        <div id="quantidade">
+                                            <p>Quantidade</p>
+
+                                            <div class="numero">
+                                                <button id="menosCafe">-<img src="" alt=""></button>
+                                                <input type="text" id="qtdCafe" class="qtd" value="0" readonly>
+                                                <button id="maisCafe">+<img src="" alt=""></button>       
+                                            </div>
+                                        </div>
+                                        <button class="adicionar" id="cafe">Adicionar</button>                         
+                                    </div>
+
+                                </div>
+
+                                <div class="bebida" id="bebida2">
+
+                                    <div class="titulo-preço">
+                                        <h2>Cappuccino (200ml)</h2>
+                                        <h3>R$ 12,50</h3>
+                                    </div>
+
+                                    <div class="quantidade">
+                                        <div id="quantidade">
+                                             <p>Quantidade</p>
+
+                                            <div class="numero">
+                                                <button id="menosCappuccino">-<img src="" alt=""></button>
+                                                <input type="text" id="qtdCappuccino" class="qtd" value="0" readonly>
+                                                <button id="maisCappuccino">+<img src="" alt=""></button>                                         
+                                            </div>                           
+                                        </div>
+
+                                        <button class="adicionar" id="cappuccino">Adicionar</button>                                        
+                                    </div>
+                                </div>
+
+                                <div class="bebida" id="bebida3">
+
+                                    <div class="titulo-preço">
+                                        <h2>Chocolate Quente (200ml)</h2>
+                                        <h3>R$ 12,50</h3>
+                                    </div>
+
+                                    <div class="quantidade">
+                                        <div id="quantidade">
+                                            <p>Quantidade</p>
+                                            <div class="numero">
+                                                <button id="menosChocolate">-<img src="" alt=""></button>
+                                                <input type="text" id="qtdChocolate" class="qtd" value="0" readonly>
+                                                <button id="maisChocolate">+<img src="" alt=""></button>                                         
+                                            </div>                           
+                                        </div>
+
+                                        <button class="adicionar" id="chocolate-quente">Adicionar</button>                                        
+                                    </div>
+                                </div>
+
+                                <div class="bebida" id="bebida4">
+
+                                    <div class="titulo-preço">
+                                        <h2>Chá (200ml)</h2>
+                                        <h3>R$ 9,50</h3>
+                                    </div>
+
+                                    <p id="descricao">Camomila, Frutas Vermelhas, Matte c/ limão, Preto</p>
+                                    
+                                    <div class="quantidade">
+                                        <div id="quantidade">
+                                            <p>Quantidade</p>
+                                            <div class="numero">
+                                                <button id="menosCha">-<img src="" alt=""></button>
+                                                <input type="text" id="qtdCha" class="qtd" value="0" readonly>
+                                                <button id="maisCha">+<img src="" alt=""></button>                                         
+                                            </div>                           
+                                        </div>
+
+                                        <button class="adicionar" id="cha">Adicionar</button>                                    
+
+                                    </div>
+
+                                </div>
+
+                                <div class="bebida" id="bebida5">
+
+                                    <div class="titulo-preço">
+                                        <h2>Adicional de Chantilly</h2>
+                                        <h3>R$ 2,80</h3>
+                                    </div>     
+                                    
+                                    <div class="quantidade">
+                                        <div id="quantidade">
+                                            <p>Quantidade</p>
+                                            <div class="numero">
+                                                <button id="menosChantilly">-<img src="" alt=""></button>
+                                                <input type="text" id="qtdChantilly" class="qtd" value="0" readonly>
+                                                <button id="maisChantilly">+<img src="" alt=""></button>                                         
+                                            </div>                           
+                                        </div>
+
+                                        <button class="adicionar" id="chantilly">Adicionar</button>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="frias">
+
+                                <div class="bebida" id="bebida6">
+
+                                    <div class="titulo-preço">
+                                        <h2>Água s/ gás</h2>
+                                        <h3>R$ 4,50</h3>
+                                    </div>  
+                                    
+                                    <div class="quantidade">
+                                        <div id="quantidade">
+                                            <p>Quantidade</p>
+                                            <div class="numero">
+                                                <button id="menosGas">-<img src="" alt=""></button>
+                                                <input type="text" id="qtdGas" class="qtd" value="0" readonly>
+                                                <button id="maisGas">+<img src="" alt=""></button>                                         
+                                            </div>                           
+                                        </div>
+
+                                        <button class="adicionar" id="agua-s-gas">Adicionar</button>
+                                    </div>
+                                </div>
+                                    
+                                <div class="bebida" id="bebida7">
+
+                                    <div class="titulo-preço">
+                                        <h2>Água c/ gás</h2>
+                                        <h3>R$ 5,00</h3>
+                                    </div>  
+                                    
+                                    <div class="quantidade">
+                                        <div id="quantidade">
+                                            <p>Quantidade</p>
+                                            <div class="numero">
+                                                <button id="menosAgua">-<img src="" alt=""></button>
+                                                <input type="text" id="qtdAgua" class="qtd" value="0" readonly>
+                                                <button id="maisAgua">+<img src="" alt=""></button>                                         
+                                            </div>                           
+                                        </div>
+
+                                        <button class="adicionar" id="agua-c-gas">Adicionar</button>
+                                    </div>
+                                </div>
+
+                                <div class="bebida" id="bebida8">
+
+                                    <div class="titulo-preço">
+                                        <h2>h2o</h2>
+                                        <h3>R$ 7,50</h3>
+                                    </div>
+
+                                    <p id="descricao">Limão, Limoneto</p>
+
+                                    <div class="quantidade">
+                                        <div id="quantidade">
+                                            <p>Quantidade</p>
+                                            <div class="numero">
+                                                <button id="menosh2o">-<img src="" alt=""></button>
+                                                <input type="text" id="qtdh2o" class="qtd" value="0" readonly>
+                                                <button id="maish2o">+<img src="" alt=""></button>                                         
+                                            </div>                           
+                                        </div>
+
+                                        <button class="adicionar" id="h2o">Adicionar</button>
+                                    </div>                                            
+                                </div>
+
+                                <div class="bebida" id="bebida9">
+
+                                    <div class="titulo-preço">
+                                        <h2>Suco Natural (300ml)</h2>
+                                        <h3>R$ 12,50</h3>
+                                    </div>
+
+                                    <p id="descricao">Abacaxi, Abacaxi c/ Hortelã, Laranja, Limão</p>
+                                      
+                                    <div class="quantidade">
+                                        <div id="quantidade">
+                                            <p>Quantidade</p>
+                                            <div class="numero">
+                                                <button id="menosSuco">-<img src="" alt=""></button>
+                                                <input type="text" id="qtdSuco" class="qtd" value="0" readonly>
+                                                <button id="maisSuco">+<img src="" alt=""></button>                                         
+                                            </div>                           
+                                        </div>
+
+                                        <button class="adicionar" id="suco">Adicionar</button>
+                                    </div>
+                                </div>
+
+                                <br>
+                                <p>* O Café, o Cappuccino e o Chocolate Quente são feitos com leite vegetal de amêndoas.</p>
+                            </div>
+                        </div>
+
+                    </div>                    
+                </div>
+
+            </div>
+
+            <button id="botaoDireito"><img src="" alt="">></button>
+
+        </section>
+
+        <section class="carrinho">
+            <img class="imgSection" src="img/carrinho.png" alt="">
+
+            <h4>Descrição do pedido:</h4>
+
+            <div class="descricaoPedido">
+                <p id="descricaoPedido"></p>
+            </div>
+
+            <div class="totalPedido">
+                <h3>Total do pedido:</h3>
+                <input type="text" id="totalPedido" readonly placeholder="R$0.00">
+            </div>
+
+            <button id="abrirModal">Pagar</button>
+
+        </section>
+    </main>
+    
+</body>
+</html>
