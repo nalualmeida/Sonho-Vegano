@@ -12,11 +12,21 @@ function carrosselAutomatico(){
         slideAtual = 0
     }
 
-    slides.style.transform = `translateX(${-slideAtual * 455}px)`
+    slides.style.transform = `translateX(${-slideAtual * 455}px)`   
 }
 
 setInterval(carrosselAutomatico, 4000)
 
+var indicador1 = document.getElementById('primeiro')
+var indicador2 = document.getElementById('segundo')
+
+    if(slideAtual == 0){
+        indicador1.style.backgroundColor = 'var(--amarelo)'
+    }
+
+    if(slideAtual == 1){
+        indicador2.style.backgroundColor = 'var(--amarelo)'
+    }    
 
 // JS DO MODAL
 
@@ -24,7 +34,7 @@ var abrirModal = document.querySelector("#abrirModal")
 var fade = document.querySelector("#fade")
 var modal = document.querySelector("#modal")
 var fechar = document.querySelector('#fechar')
-var eventos = [abrirModal,fade]
+var eventos = [abrirModal,fade,fechar]
 
 
 let toogleModal = ()=>{
@@ -34,8 +44,4 @@ let toogleModal = ()=>{
 
 eventos.map((el)=>{
     el.addEventListener("click", () => toogleModal())
-})
-
-fechar.addEventListener('click', () => {
-    toogleModal()
 })

@@ -170,6 +170,10 @@ button#botaoEsquerdo:hover, button#botaoDireito:hover{
     cursor: default;
 }
 
+.quantidade input.qtd::placeholder{
+    color: black;
+}
+
 button.adicionar{
     width: 90px;
     height: 30px;
@@ -383,7 +387,7 @@ button#fechar:hover, button#fecharAlert:hover{
     transition: 1s;
 }
 
-#modal, #modalAlert{
+#modal{
     position: fixed;
     top: 50%;
     left: 50%;
@@ -391,7 +395,15 @@ button#fechar:hover, button#fecharAlert:hover{
     z-index: 6;
 }
 
-#fade, #fadeAlert{
+#modalAlert{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 8;
+}
+
+#fade{
     position: fixed;
     top: 0;
     left: 0;
@@ -400,6 +412,15 @@ button#fechar:hover, button#fecharAlert:hover{
     background-color: #ab2e259f;
     z-index: 5;
 }
+
+#fadeAlert{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ab2e259f;
+    z-index: 7;}
 
 #modal.hide, #modalAlert.hide{
     top: 0;
