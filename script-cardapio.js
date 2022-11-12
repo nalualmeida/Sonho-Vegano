@@ -73,73 +73,61 @@ var aguaCGas = document.getElementById('agua-c-gas')
 var h2o = document.getElementById('h2o')
 var suco = document.getElementById('suco')
 
-var menosSonho = document.getElementById('menosSonho')
-var maisSonho = document.getElementById('maisSonho')
 var qtdSonho = document.getElementById('qtdSonho')
+var visorSonho = document.getElementById("visorSonho")
 
-var menosCroissant= document.getElementById('menosCroissant')
-var maisCroissant= document.getElementById('maisCroissant')
 var qtdCroissant= document.getElementById('qtdCroissant')
+var visorCroissant = document.getElementById("visorCroissant")
 
-var menosCinnamon= document.getElementById('menosCinnamon')
-var maisCinnamon= document.getElementById('maisCinnamon')
 var qtdCinnamon= document.getElementById('qtdCinnamon')
+var visorCinnamon = document.getElementById("visorCinnamon")
 
-var menosBolo= document.getElementById('menosBolo')
-var maisBolo= document.getElementById('maisBolo')
 var qtdBolo= document.getElementById('qtdBolo')
+var visorBolo = document.getElementById("visorBolo")
 
-var menosPao= document.getElementById('menosPao')
-var maisPao= document.getElementById('maisPao')
 var qtdPao= document.getElementById('qtdPao')
+var visorPao = document.getElementById("visorPao")
 
-var menosCoxinha= document.getElementById('menosCoxinha')
-var maisCoxinha= document.getElementById('maisCoxinha')
 var qtdCoxinha= document.getElementById('qtdCoxinha')
+var visorCoxinha = document.getElementById("visorCoxinha")
 
-var menosQuiche= document.getElementById('menosQuiche')
-var maisQuiche= document.getElementById('maisQuiche')
 var qtdQuiche= document.getElementById('qtdQuiche')
+var visorQuiche = document.getElementById("visorQuiche")
 
-var menosQueijo= document.getElementById('menosQueijo')
-var maisQueijo= document.getElementById('maisQueijo')
 var qtdQueijo= document.getElementById('qtdQueijo')
+var visorQueijo = document.getElementById("visorQueijo")
 
-var menosCafe= document.getElementById('menosCafe')
-var maisCafe= document.getElementById('maisCafe')
 var qtdCafe= document.getElementById('qtdCafe')
+var visorCafe = document.getElementById("visorCafe")
 
-var menosCappuccino= document.getElementById('menosCappuccino')
-var maisCappuccino= document.getElementById('maisCappuccino')
 var qtdCappuccino= document.getElementById('qtdCappuccino')
+var visorCappuccino = document.getElementById("visorCappuccino")
 
-var menosChocolate= document.getElementById('menosChocolate')
-var maisChocolate= document.getElementById('maisChocolate')
 var qtdChocolate= document.getElementById('qtdChocolate')
+var visorChocolate = document.getElementById("visorChocolate")
 
-var menosCha= document.getElementById('menosCha')
-var maisCha= document.getElementById('maisCha')
 var qtdCha= document.getElementById('qtdCha')
+var visorCha = document.getElementById("visorCha")
+var camomila = document.getElementById('camomila')
+var frutas = document.getElementById('frutas')
+var matte = document.getElementById('matte')
+var preto = document.getElementById('preto')
+var escolhidoCha = ''
 
-var menosChantilly= document.getElementById('menosChantilly')
-var maisChantilly= document.getElementById('maisChantilly')
 var qtdChantilly= document.getElementById('qtdChantilly')
+var visorChantillly = document.getElementById("visorChantillly")
 
-var menosGas= document.getElementById('menosGas')
-var maisGas= document.getElementById('maisGas')
 var qtdGas= document.getElementById('qtdGas')
+var visorGas = document.getElementById("visorGas")
 
-var menosAgua= document.getElementById('menosAgua')
-var maisAgua= document.getElementById('maisAgua')
 var qtdAgua= document.getElementById('qtdAgua')
+var visorAgua = document.getElementById("visorAgua")
 
-var menosh2o= document.getElementById('menosh2o')
-var maish2o= document.getElementById('maish2o')
 var qtdh2o= document.getElementById('qtdh2o')
+var visorh2o = document.getElementById("visorh2o")
 
-var menosSuco= document.getElementById('menosSuco')
-var maisSuco= document.getElementById('maisSuco')
 var qtdSuco= document.getElementById('qtdSuco')
+var visorSuco = document.getElementById("visorSuco")
 
 var precoComida = 0
 var descricaoPedido = document.getElementById('descricaoPedido')
@@ -166,126 +154,91 @@ var comidas = [
     {nome: 'Suco Natural', valor: 11.90}
 ]
 
-maisSonho.addEventListener('click', ()=> {
-    qtdSonho.value ++
-})
-function qSonho(){qtdSonho.value --}
-menosSonho.addEventListener('click', qSonho)
-while(qtdSonho.value == 0){
-    menosSonho.removeEventListener('click', qSonho)
-}
+var opcoesCha = [
+    {nome: 'de Camomila'},
+    {nome: 'de Frutas Vermelhas'},
+    {nome: 'Matte c/ Limão'},
+    {nome: 'Preto'}
+]
 
-maisCroissant.addEventListener('click', ()=> {
-    total = Number(qtdCroissant.value ++)
-})
-menosCroissant.addEventListener('click', ()=> {
-    total = Number(qtdCroissant.value --)
-})
+// maisSonho.addEventListener('click', ()=> {
+//     qtdSonho.value ++
+// })
+// function qSonho(){qtdSonho.value --}
+// menosSonho.addEventListener('click', qSonho)
+// if(qtdSonho.value == 2){
+//     alert("oooooooooooo")
+// }
 
-maisCinnamon.addEventListener('click', ()=> {
-    total = Number(qtdCinnamon.value ++)
-})
-menosCinnamon.addEventListener('click', ()=> {
-    total = Number(qtdCinnamon.value --)
+
+qtdSonho.addEventListener('input', ()=> {
+    visorSonho.innerHTML = qtdSonho.value
 })
 
-maisBolo.addEventListener('click', ()=> {
-    total = Number(qtdBolo.value ++)
-})
-menosBolo.addEventListener('click', ()=> {
-    total = Number(qtdBolo.value --)
+qtdCroissant.addEventListener('input', ()=> {
+    visorCroissant.innerHTML = qtdCroissant.value
 })
 
-maisPao.addEventListener('click', ()=> {
-    total = Number(qtdPao.value ++)
-})
-menosPao.addEventListener('click', ()=> {
-    total = Number(qtdPao.value --)
+qtdCinnamon.addEventListener('input', ()=> {
+    visorCinnamon.innerHTML = qtdCinnamon.value
 })
 
-maisCoxinha.addEventListener('click', ()=> {
-    total = Number(qtdCoxinha.value ++)
-})
-menosCoxinha.addEventListener('click', ()=> {
-    total = Number(qtdCoxinha.value --)
+qtdBolo.addEventListener('input', ()=> {
+    visorBolo.innerHTML = qtdBolo.value
 })
 
-maisQuiche.addEventListener('click', ()=> {
-    total = Number(qtdQuiche.value ++)
-})
-menosQuiche.addEventListener('click', ()=> {
-    total = Number(qtdQuiche.value --)
+qtdPao.addEventListener('input', ()=> {
+    visorPao.innerHTML = qtdPao.value
 })
 
-maisQueijo.addEventListener('click', ()=> {
-    total = Number(qtdQueijo.value ++)
-})
-menosQueijo.addEventListener('click', ()=> {
-    total = Number(qtdQueijo.value --)
+qtdCoxinha.addEventListener('input', ()=> {
+    visorCoxinha.innerHTML = qtdCoxinha.value
 })
 
-maisCafe.addEventListener('click', ()=> {
-    total = Number(qtdCafe.value ++)
-})
-menosCafe.addEventListener('click', ()=> {
-    total = Number(qtdCafe.value --)
+qtdQuiche.addEventListener('input', ()=> {
+    visorQuiche.innerHTML = qtdQuiche.value
 })
 
-maisCappuccino.addEventListener('click', ()=> {
-    total = Number(qtdCappuccino.value ++)
-})
-menosCappuccino.addEventListener('click', ()=> {
-    total = Number(qtdCappuccino.value --)
+qtdQueijo.addEventListener('input', ()=> {
+    visorQueijo.innerHTML = qtdQueijo.value
 })
 
-maisChocolate.addEventListener('click', ()=> {
-    total = Number(qtdChocolate.value ++)
-})
-menosChocolate.addEventListener('click', ()=> {
-    total = Number(qtdChocolate.value --)
+qtdCafe.addEventListener('input', ()=> {
+    visorCafe.innerHTML = qtdCafe.value
 })
 
-maisCha.addEventListener('click', ()=> {
-    total = Number(qtdCha.value ++)
-})
-menosCha.addEventListener('click', ()=> {
-    total = Number(qtdCha.value --)
+qtdCappuccino.addEventListener('input', ()=> {
+    visorCappuccino.innerHTML = qtdCappuccino.value
 })
 
-maisChantilly.addEventListener('click', ()=> {
-    total = Number(qtdChantilly.value ++)
-})
-menosChantilly.addEventListener('click', ()=> {
-    total = Number(qtdChantilly.value --)
+qtdChocolate.addEventListener('input', ()=> {
+    visorChocolate.innerHTML = qtdChocolate.value
 })
 
-maisAgua.addEventListener('click', ()=> {
-    total = Number(qtdAgua.value ++)
-})
-menosAgua.addEventListener('click', ()=> {
-    total = Number(qtdAgua.value --)
+qtdCha.addEventListener('input', ()=> {
+    visorCha.innerHTML = qtdCha.value
 })
 
-maisGas.addEventListener('click', ()=> {
-    total = Number(qtdGas.value ++)
-})
-menosGas.addEventListener('click', ()=> {
-    total = Number(qtdGas.value --)
+qtdChantilly.addEventListener('input', ()=> {
+    visorChantilly.innerHTML = qtdChantilly.value
 })
 
-maish2o.addEventListener('click', ()=> {
-    total = Number(qtdh2o.value ++)
-})
-menosh2o.addEventListener('click', ()=> {
-    total = Number(qtdh2o.value --)
+qtdAgua.addEventListener('input', ()=> {
+    visorAgua.innerHTML = qtdAgua.value
 })
 
-maisSuco.addEventListener('click', ()=> {
-    total = Number(qtdSuco.value ++)
+qtdGas.addEventListener('input', ()=> {
+    visorGas.innerHTML = qtdGas.value
 })
-menosSuco.addEventListener('click', ()=> {
-    total = Number(qtdSuco.value --)
+
+qtdh2o.addEventListener('input', ()=> {
+    visorh2o.innerHTML = qtdh2o.value
 })
+
+qtdSuco.addEventListener('input', ()=> {
+    visorSuco.innerHTML = qtdSuco.value
+})
+
 
 sonho.addEventListener('click', ()=> {
     if(qtdSonho.value == 0){
@@ -315,8 +268,7 @@ sonho.addEventListener('click', ()=> {
 })
 
 croissant.addEventListener('click', ()=> {
-    let quantidade = Number(qtdCroissant.value)
-    precoComida =  quantidade * comidas[1].valor
+    precoComida =  qtdCroissant.value * comidas[1].valor
 
     descricaoPedido.innerHTML += `<p>${qtdCroissant.value}x -- ${comidas[1].nome} -- R$${precoComida.toFixed(2)}</p>`
     soma += precoComida
@@ -324,8 +276,7 @@ croissant.addEventListener('click', ()=> {
 })
 
 cinnamon.addEventListener('click', ()=> {
-    let quantidade = Number(qtdCinnamon.value)
-    precoComida = quantidade * comidas[2].valor
+    precoComida = qtdCinnamon.value * comidas[2].valor
 
     descricaoPedido.innerHTML += `<p>${qtdCinnamon.value}x -- ${comidas[2].nome} -- R$${precoComida.toFixed(2)}</p>`
     soma += precoComida
@@ -333,8 +284,7 @@ cinnamon.addEventListener('click', ()=> {
 })
 
 bolo.addEventListener('click', ()=> {
-    let quantidade = Number(qtdBolo.value)
-    precoComida = quantidade * comidas[3].valor
+    precoComida = qtdBolo.value * comidas[3].valor
 
     descricaoPedido.innerHTML += `<p>${qtdBolo.value}x -- ${comidas[3].nome} -- R$${precoComida.toFixed(2)}</p>`
     soma += precoComida
@@ -342,8 +292,7 @@ bolo.addEventListener('click', ()=> {
 })
 
 paoDeQueijo.addEventListener('click', ()=> {
-    let quantidade = Number(qtdPao.value)
-    precoComida = quantidade * comidas[4].valor
+    precoComida = qtdPao.value * comidas[4].valor
 
     descricaoPedido.innerHTML += `<p>${qtdPao.value}x -- ${comidas[4].nome} -- R$${precoComida.toFixed(2)}</p>`
     soma += precoComida
@@ -351,8 +300,7 @@ paoDeQueijo.addEventListener('click', ()=> {
 })
 
 coxinha.addEventListener('click', ()=> {
-    let quantidade = Number(qtdCoxinha.value)
-    precoComida = quantidade * comidas[5].valor
+    precoComida = qtdCoxinha.value * comidas[5].valor
 
     descricaoPedido.innerHTML += `<p>${qtdCoxinha.value}x -- ${comidas[5].nome} -- R$${precoComida.toFixed(2)}</p>`
     soma += precoComida
@@ -360,8 +308,7 @@ coxinha.addEventListener('click', ()=> {
 })
 
 quiche.addEventListener('click', ()=> {
-    let quantidade = Number(qtdQuiche.value)
-    precoComida = quantidade * comidas[6].valor
+    precoComida = qtdQuiche.value * comidas[6].valor
 
     descricaoPedido.innerHTML += `<p>${qtdQuiche.value}x -- ${comidas[6].nome} -- R$${precoComida.toFixed(2)}</p>`
     soma += precoComida
@@ -369,8 +316,7 @@ quiche.addEventListener('click', ()=> {
 })
 
 queijoQuente.addEventListener('click', ()=> {
-    let quantidade = Number(qtdQueijo.value)
-    precoComida = quantidade * comidas[7].valor
+    precoComida = qtdQueijo.value * comidas[7].valor
 
     descricaoPedido.innerHTML += `<p>${qtdQueijo.value}x -- ${comidas[7].nome} -- R$${precoComida.toFixed(2)}</p>`
     soma += precoComida
@@ -378,8 +324,7 @@ queijoQuente.addEventListener('click', ()=> {
 })
 
 cafe.addEventListener('click', ()=> {
-    let quantidade = Number(qtdCafe.value)
-    precoComida = quantidade * comidas[8].valor
+    precoComida = qtdCafe.value * comidas[8].valor
 
     descricaoPedido.innerHTML += `<p>${qtdCafe.value}x -- ${comidas[8].nome} -- R$${precoComida.toFixed(2)}</p>`
     soma += precoComida
@@ -387,8 +332,7 @@ cafe.addEventListener('click', ()=> {
 })
 
 cappuccino.addEventListener('click', ()=> {
-    let quantidade = Number(qtdCappuccino.value)
-    precoComida = quantidade * comidas[9].valor
+    precoComida = qtdCappuccino.value * comidas[9].valor
 
     descricaoPedido.innerHTML += `<p>${qtdCappuccino.value}x -- ${comidas[9].nome} -- R$${precoComida.toFixed(2)}</p>`
     soma += precoComida
@@ -396,8 +340,7 @@ cappuccino.addEventListener('click', ()=> {
 })
 
 chocolateQuente.addEventListener('click', ()=> {
-    let quantidade = Number(qtdChocolate.value)
-    precoComida = quantidade * comidas[10].valor
+    precoComida = qtdChocolate.value * comidas[10].valor
 
     descricaoPedido.innerHTML += `<p>${qtdChocolate.value}x -- ${comidas[10].nome} -- R$${precoComida.toFixed(2)}</p>`
     soma += precoComida
@@ -405,17 +348,24 @@ chocolateQuente.addEventListener('click', ()=> {
 })
 
 cha.addEventListener('click', ()=> {
-    let quantidade = Number(qtdCha.value)
-    precoComida = quantidade * comidas[11].valor
+    if(camomila.checked){
+        escolhidoCha = opcoesCha[0].nome
+    }else if(frutas.checked){
+        escolhidoCha = opcoesCha[1].nome
+    }else if(matte.checked){
+        escolhidoCha = opcoesCha[2].nome
+    }else if(preto.checked){
+        escolhidoCha = opcoesCha[3].nome
+    }
+    precoComida = qtdCha.value * comidas[11].valor
 
-    descricaoPedido.innerHTML += `<p>${qtdCha.value}x -- ${comidas[11].nome} -- R$${precoComida.toFixed(2)}</p>`
+    descricaoPedido.innerHTML += `<p>${qtdCha.value}x -- ${comidas[11].nome} ${escolhidoCha} -- R$${precoComida.toFixed(2)}</p>`
     soma += precoComida
     totalPedido.value = `R$${soma.toFixed(2)}`
 })
 
 chantilly.addEventListener('click', ()=> {
-    let quantidade = Number(qtdChantilly.value)
-    precoComida = quantidade * comidas[12].valor
+    precoComida = qtdChantilly.value * comidas[12].valor
 
     descricaoPedido.innerHTML += `<p>${qtdChantilly.value}x -- ${comidas[12].nome} -- R$${precoComida.toFixed(2)}</p>`
     soma += precoComida
@@ -423,8 +373,7 @@ chantilly.addEventListener('click', ()=> {
 })
 
 aguaSGas.addEventListener('click', ()=> {
-    let quantidade = Number(qtdAgua.value)
-    precoComida = quantidade * comidas[13].valor
+    precoComida = qtdAgua.value * comidas[13].valor
 
     descricaoPedido.innerHTML += `<p>${qtdAgua.value}x -- ${comidas[13].nome} -- R$${precoComida.toFixed(2)}</p>`
     soma += precoComida
@@ -432,8 +381,7 @@ aguaSGas.addEventListener('click', ()=> {
 })
 
 aguaCGas.addEventListener('click', ()=> {
-    let quantidade = Number(qtdGas.value)
-    precoComida = quantidade * comidas[14].valor
+    precoComida = qtdGas.value * comidas[14].valor
 
     descricaoPedido.innerHTML += `<p>${qtdGas.value}x -- ${comidas[14].nome} -- R$${precoComida.toFixed(2)}</p>`
     soma += precoComida
@@ -441,8 +389,7 @@ aguaCGas.addEventListener('click', ()=> {
 })
 
 h2o.addEventListener('click', ()=> {
-    let quantidade = Number(qtdh2o.value)
-    precoComida = quantidade * comidas[15].valor
+    precoComida = qtdh2o.value * comidas[15].valor
 
     descricaoPedido.innerHTML += `<p>${qtdh2o.value}x -- ${comidas[15].nome} -- R$${precoComida.toFixed(2)}</p>`
     soma += precoComida
@@ -450,8 +397,7 @@ h2o.addEventListener('click', ()=> {
 })
 
 suco.addEventListener('click', ()=> {
-    let quantidade = Number(qtdSuco.value)
-    precoComida = quantidade * comidas[16].valor
+    precoComida = qtdSuco.value * comidas[16].valor
 
     descricaoPedido.innerHTML += `<p>${qtdSuco.value}x -- ${comidas[16].nome} -- R$${precoComida.toFixed(2)}</p>`
     soma += precoComida

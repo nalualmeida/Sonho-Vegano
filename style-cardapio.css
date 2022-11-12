@@ -135,44 +135,35 @@ button#botaoEsquerdo:hover, button#botaoDireito:hover{
     gap: 7px;
 }
 
-.quantidade .numero{
+.lanche .quantidade .numero{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-top: -20px;
 }
 
-.numero button{
-    height: 25px;
-    width: 25px;
-    background-color: var(--laranja);
-    border: 2px solid var(--vermelho-terra);
-    border-radius: 20vh;
-    font-weight: bold;
-    font-size: medium;
-    text-align: center;
-    cursor: pointer;
-    transition: 0.5s;
-}
-
-.numero button:hover{
-    background-color: var(--laranja-escuro);
+.numero p.visor{
+    font-size: large;
+    margin: 8px;
 }
 
 .quantidade input.qtd{
-    width: 40px;
-    background: none;
-    border: none;
-    text-align: center;
-    font-family: var(--fonte-principal);
-    font-size: large;
-    outline: none;
-    cursor: default;
+    width: 80px;
+    -webkit-appearance: none;
+    background-color: var(--azul-escuro);
+    border: 2px solid var(--azul-claro);
+    border-radius: 20vh;
+    cursor: pointer;
 }
 
-.quantidade input.qtd::placeholder{
-    color: black;
+input.qtd::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background-color: white;
+    border-radius: 20vh;
 }
 
 button.adicionar{
@@ -226,6 +217,7 @@ button.adicionar:hover{
     width: 65%;
     height: fit-content;
     margin-bottom: -1px;
+    margin-top: 14px;
 }
 
 .titulo-preço h3{
@@ -234,31 +226,70 @@ button.adicionar:hover{
     height: fit-content;
 }
 
-#bebida4 p#descricao, #bebida8 p#descricao{
-    margin-top: -4px;
-    margin-bottom: -4px;
-    font-size: large;
-}
-
-#bebida9 p#descricao{
-    margin-bottom: -4px;
-    font-size: large;
-}
-
 .bebida .quantidade{
     display: flex;
     flex-direction: row;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
-    gap: 4vh;
+    gap: 2vh;
 }
 
-.bebida .quantidade #quantidade{
+.bebida .quantidade .numero{
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 7px;
 }
+
+.bebida .quantidade p{
+    margin-bottom: -1px;
+}
+
+.bebida #adicionar{
+    margin-bottom: 0;
+}
+
+.inputRadio{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+input[type='radio'] {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+  }
+  
+  input[type='radio'] + label.label {
+    position: relative;
+    cursor: pointer;
+    padding-left: 20px;
+  }
+ 
+  input[type=radio] + label.label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 20vh;
+    border: solid 2px var(--laranja-escuro);
+    background-color: var(--laranja);
+    vertical-align: bottom;
+  }
+  
+  input[type=radio]:checked + label::after {
+    content: '';
+    background-color: var(--rosa-escuro);
+    width: 10px;
+    height: 10px;
+    border-radius: 20vh;
+    position: absolute;
+    left: 3px;
+    bottom: 3px;
+  }
 
 section.carrinho{
     width: 35%;
