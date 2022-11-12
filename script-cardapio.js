@@ -167,14 +167,12 @@ var comidas = [
 ]
 
 maisSonho.addEventListener('click', ()=> {
-    total = Number(qtdSonho.value ++)
-}) 
-if(qtdSonho.value != '0'){
-    menosSonho.addEventListener('click', ()=> {
-        total = Number(qtdSonho.value --)
-    })
-}else if (qtdSonho.value == '0'){
-    menosSonho.removeEventListener()
+    qtdSonho.value ++
+})
+function qSonho(){qtdSonho.value --}
+menosSonho.addEventListener('click', qSonho)
+while(qtdSonho.value == 0){
+    menosSonho.removeEventListener('click', qSonho)
 }
 
 maisCroissant.addEventListener('click', ()=> {
@@ -290,25 +288,25 @@ menosSuco.addEventListener('click', ()=> {
 })
 
 sonho.addEventListener('click', ()=> {
-    if(qtdSonho.value == '0'){
-        let fadeAlert = document.querySelector("#fadeAlert")
-        let modalAlert = document.querySelector("#modalAlert")
-        let fecharAlert = document.querySelector('#fecharAlert')
+    if(qtdSonho.value == 0){
+        var fadeAlert = document.querySelector("#fadeAlert ")
+        var modalAlert  = document.querySelector("#modalAlert ")
+        var fecharAlert  = document.querySelector('#fecharAlert ')
         
-        let eventosAlert = [sonho,fadeAlert,fecharAlert]
+        let eventos  = [sonho,fadeAlert ,fecharAlert ]
         
-        let toogleModalAlert = ()=>{
-            modalAlert.classList.toggle('hide')
-            fadeAlert.classList.toggle('hide')
+        let toogleModalAlert  = ()=>{
+            modalAlert .classList.toggle('hide')
+            fadeAlert .classList.toggle('hide')
         }
         
-        eventosAlert.map((elAlert) => {
-            elAlert.addEventListener("click", () => toogleModalAlert())
+        eventos.map((el)=>{
+            el.addEventListener("click", () => toogleModalAlert ())
         }) 
-               
-    }else if(qtdSonho.value != '0'){
-        let quantidade = Number(qtdSonho.value)
-        precoComida =  quantidade * comidas[0].valor
+
+    }
+    if(qtdSonho.value > 0){
+        precoComida =  qtdSonho.value * comidas[0].valor
 
         descricaoPedido.innerHTML += `<p>${qtdSonho.value}x -- ${comidas[0].nome} -- R$${precoComida.toFixed(2)}</p>`
         soma += precoComida

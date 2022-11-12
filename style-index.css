@@ -35,18 +35,30 @@ img#logo{
     margin: auto;
 }
 
+.opacidade{
+    height: 210px;
+    width: 455px;
+}
+
 .direita{
     display: flex;
     overflow: hidden;
     width: 455px;
     margin: auto;
-    stop-opacity: ;
+    position: absolute;
+}
+
+.direita-topo{
+    height: 210px;
+    width: 455px;
+    position: absolute;
+    background-image: radial-gradient( circle farthest-corner at 49.8% 49.7%,  rgba(221,221,221,0) 75.9%, #ee90af 93.6% );
 }
 
 section.slides{
     display: flex;
     transform: translateX(0);
-    transition: 0.9s ease-in-out;
+    transition: 0.9s ease-in-out;;
 }
 
 .slide{
@@ -98,9 +110,17 @@ section.slides{
 .indicadores #primeiro, .indicadores #segundo{
     width: 15px;
     height: 15px;
-    background-color: white;
     border: 2px solid var(--azul-escuro);
     border-radius: 20vh;
+    transition: 0.9s;
+}
+
+.indicadores #primeiro{
+    background-color: var(--amarelo);
+}
+
+.indicadores #segundo{
+    background-color: white;
 }
 
 .caixa a{

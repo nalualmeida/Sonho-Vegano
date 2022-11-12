@@ -5,28 +5,28 @@ var slide = document.querySelectorAll('.slides .slide')
 
 var slideAtual = 0
 
+var indicador1 = document.getElementById('primeiro')
+var indicador2 = document.getElementById('segundo')
 function carrosselAutomatico(){
     slideAtual ++
 
     if(slideAtual > slide.length - 1){
         slideAtual = 0
     }
+    if(slideAtual == slide.length - 1){
+        indicador2.style.backgroundColor = '#FFD976'
+        indicador1.style.backgroundColor = 'white' 
+    }
+    if(slideAtual == 0){
+        indicador1.style.backgroundColor = '#FFD976'
+        indicador2.style.backgroundColor = 'white' 
+    }  
 
-    slides.style.transform = `translateX(${-slideAtual * 455}px)`   
+    slides.style.transform = `translateX(${-slideAtual * 455}px)`  
 }
 
-setInterval(carrosselAutomatico, 4000)
+setInterval(carrosselAutomatico, 5000)
 
-var indicador1 = document.getElementById('primeiro')
-var indicador2 = document.getElementById('segundo')
-
-    if(slideAtual == 0){
-        indicador1.style.backgroundColor = 'var(--amarelo)'
-    }
-
-    if(slideAtual == 1){
-        indicador2.style.backgroundColor = 'var(--amarelo)'
-    }    
 
 // JS DO MODAL
 
