@@ -534,7 +534,7 @@ button#fechar:hover{
     }
 }
 
-@media screen and (max-width: 320px) and (max-height: 570px){  
+@media screen and (max-width: 320px) and (max-height: 615px){  
     .slide h2{
         padding-left: 7vh;
         padding-right: 7vh;
