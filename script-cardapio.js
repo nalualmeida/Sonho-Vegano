@@ -35,6 +35,7 @@ function atualizarPagina(){
 
 // JS DO MODAL PAGAR
 
+
 var abrirModal = document.querySelector("#abrirModal")
 var fade = document.querySelector("#fade")
 var modal = document.querySelector("#modal")

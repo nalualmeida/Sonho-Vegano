@@ -313,7 +313,7 @@ input[type='checkbox'] {
     bottom: 0;
     width: 12px;
     height: 12px;
-    border-radius: 20vh;
+    border-radius: 5px;
     border: solid 2px var(--laranja-escuro);
     background-color: var(--laranja);
     vertical-align: bottom;
@@ -324,7 +324,7 @@ input[type='checkbox'] {
     background-color: var(--rosa-escuro);
     width: 10px;
     height: 10px;
-    border-radius: 20vh;
+    border-radius: 2px;
     position: absolute;
     left: 3px;
     bottom: 3px;
