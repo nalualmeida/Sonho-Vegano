@@ -2,6 +2,7 @@
 
 var paginas = document.getElementById('paginas')
 var pagina = document.querySelectorAll('.pagina')
+var lanches = document.getElementById('lanches')
 var botaoEsquerdo = document.getElementById('botaoEsquerdo')
 var botaoDireito = document.getElementById('botaoDireito')
 
@@ -28,7 +29,7 @@ botaoDireito.addEventListener('click', () => {
 })
 
 function atualizarPagina(){
-    paginas.style.transform = `translateX(${-paginaAtual * 94.3}vh)`
+    paginas.style.transform = `translateX(${-paginaAtual * (paginas.offsetWidth/2)}px)`
 }
 
 
@@ -67,7 +68,6 @@ var cafe = document.getElementById('cafe')
 var cappuccino = document.getElementById('cappuccino')
 var chocolateQuente = document.getElementById('chocolate-quente')
 var cha = document.getElementById('cha')
-var chantilly = document.getElementById('chantilly')
 var aguaSGas = document.getElementById('agua-s-gas')
 var aguaCGas = document.getElementById('agua-c-gas')
 var h2o = document.getElementById('h2o')
@@ -99,12 +99,15 @@ var visorQueijo = document.getElementById("visorQueijo")
 
 var qtdCafe= document.getElementById('qtdCafe')
 var visorCafe = document.getElementById("visorCafe")
+var chantillyCafe = document.getElementById("chantillyCafe")
 
 var qtdCappuccino= document.getElementById('qtdCappuccino')
 var visorCappuccino = document.getElementById("visorCappuccino")
+var chantillyCappuccino = document.getElementById("chantillyCappuccino")
 
 var qtdChocolate= document.getElementById('qtdChocolate')
 var visorChocolate = document.getElementById("visorChocolate")
+var chantillyChocolate = document.getElementById("chantillyChocolate")
 
 var qtdCha= document.getElementById('qtdCha')
 var visorCha = document.getElementById("visorCha")
@@ -114,20 +117,25 @@ var matte = document.getElementById('matte')
 var preto = document.getElementById('preto')
 var escolhidoCha = ''
 
-var qtdChantilly= document.getElementById('qtdChantilly')
-var visorChantillly = document.getElementById("visorChantillly")
-
 var qtdGas= document.getElementById('qtdGas')
 var visorGas = document.getElementById("visorGas")
 
 var qtdAgua= document.getElementById('qtdAgua')
 var visorAgua = document.getElementById("visorAgua")
 
-var qtdh2o= document.getElementById('qtdh2o')
-var visorh2o = document.getElementById("visorh2o")
+var qtdH2o= document.getElementById('qtdH2o')
+var visorH2o = document.getElementById("visorH2o")
+var limaoH2o = document.getElementById("limaoH2o")
+var limoneto = document.getElementById("limoneto")
+var escolhidoH2o = ''
 
 var qtdSuco= document.getElementById('qtdSuco')
 var visorSuco = document.getElementById("visorSuco")
+var abacaxi = document.getElementById("abacaxi")
+var hortela = document.getElementById("hortela")
+var laranja = document.getElementById("laranja")
+var limaoSuco = document.getElementById("limaoSuco")
+var escolhidoSuco = ''
 
 var precoComida = 0
 var descricaoPedido = document.getElementById('descricaoPedido')
@@ -147,18 +155,24 @@ var comidas = [
     {nome: 'Cappuccino', valor: 12.50},
     {nome: 'Chocolate Quente', valor: 12.50},
     {nome: 'Chá', valor: 9.50},
-    {nome: 'Adicional de Chantilly', valor: 2.80},
     {nome: 'Água s/ gás', valor: 4.50},
     {nome: 'Água c/ gás', valor: 5.00},
     {nome: 'h2o', valor: 7.50},
-    {nome: 'Suco Natural', valor: 11.90}
+    {nome: 'Suco Natural', valor: 9.50},
+    {nome: '+ Chantilly'}
 ]
 
-var opcoesCha = [
+var opcoes = [
     {nome: 'de Camomila'},
     {nome: 'de Frutas Vermelhas'},
     {nome: 'Matte c/ Limão'},
-    {nome: 'Preto'}
+    {nome: 'Preto'},
+    {nome: 'Limão'},
+    {nome: 'Limoneto'},
+    {nome: 'de Abacaxi'},
+    {nome: 'de Abacaxi c/ hortelã'},
+    {nome: 'de Laranja'},
+    {nome: 'de Limão'}
 ]
 
 // maisSonho.addEventListener('click', ()=> {
@@ -219,10 +233,6 @@ qtdCha.addEventListener('input', ()=> {
     visorCha.innerHTML = qtdCha.value
 })
 
-qtdChantilly.addEventListener('input', ()=> {
-    visorChantilly.innerHTML = qtdChantilly.value
-})
-
 qtdAgua.addEventListener('input', ()=> {
     visorAgua.innerHTML = qtdAgua.value
 })
@@ -231,8 +241,8 @@ qtdGas.addEventListener('input', ()=> {
     visorGas.innerHTML = qtdGas.value
 })
 
-qtdh2o.addEventListener('input', ()=> {
-    visorh2o.innerHTML = qtdh2o.value
+qtdH2o.addEventListener('input', ()=> {
+    visorH2o.innerHTML = qtdH2o.value
 })
 
 qtdSuco.addEventListener('input', ()=> {
@@ -240,166 +250,219 @@ qtdSuco.addEventListener('input', ()=> {
 })
 
 
-sonho.addEventListener('click', ()=> {
-    if(qtdSonho.value == 0){
-        var fadeAlert = document.querySelector("#fadeAlert ")
-        var modalAlert  = document.querySelector("#modalAlert ")
-        var fecharAlert  = document.querySelector('#fecharAlert ')
-        
-        let eventos  = [sonho,fadeAlert ,fecharAlert ]
-        
-        let toogleModalAlert  = ()=>{
-            modalAlert .classList.toggle('hide')
-            fadeAlert .classList.toggle('hide')
-        }
-        
-        eventos.map((el)=>{
-            el.addEventListener("click", () => toogleModalAlert ())
-        }) 
 
-    }
-    if(qtdSonho.value > 0){
+sonho.addEventListener('click', ()=> {
+    if(qtdSonho.value != '0'){
         precoComida =  qtdSonho.value * comidas[0].valor
 
         descricaoPedido.innerHTML += `<p>${qtdSonho.value}x -- ${comidas[0].nome} -- R$${precoComida.toFixed(2)}</p>`
         soma += precoComida
-        totalPedido.value = `R$${soma.toFixed(2)}`        
-    }
+        totalPedido.value = `R$${soma.toFixed(2)}` 
+    }else if(qtdSonho.value == '0'){alert('Nenhum item foi adicionado ao carrinho.')
+        // var fadeAlert = document.querySelector("#fadeAlert ")
+        // var modalAlert  = document.querySelector("#modalAlert ")
+        // var fecharAlert  = document.querySelector('#fecharAlert ')
+        
+        // let eventos  = [sonho,fadeAlert ,fecharAlert ]
+        
+        // let toogleModalAlert  = ()=>{
+        //     modalAlert .classList.toggle('hide')
+        //     fadeAlert .classList.toggle('hide')
+        // }
+        
+        // eventos.map((el)=>{
+        //     el.addEventListener("click", () => toogleModalAlert ())
+        // })
+    }       
 })
 
 croissant.addEventListener('click', ()=> {
-    precoComida =  qtdCroissant.value * comidas[1].valor
+    if(qtdCroissant.value != '0'){
+        precoComida =  qtdCroissant.value * comidas[1].valor
 
-    descricaoPedido.innerHTML += `<p>${qtdCroissant.value}x -- ${comidas[1].nome} -- R$${precoComida.toFixed(2)}</p>`
-    soma += precoComida
-    totalPedido.value = `R$${soma.toFixed(2)}`        
+        descricaoPedido.innerHTML += `<p>${qtdCroissant.value}x -- ${comidas[1].nome} -- R$${precoComida.toFixed(2)}</p>`
+        soma += precoComida
+        totalPedido.value = `R$${soma.toFixed(2)}`          
+    }else if(qtdCroissant.value == '0'){alert('Nenhum item foi adicionado ao carrinho.')}  
 })
 
 cinnamon.addEventListener('click', ()=> {
-    precoComida = qtdCinnamon.value * comidas[2].valor
+    if(qtdCinnamon.value != '0'){
+        precoComida = qtdCinnamon.value * comidas[2].valor
 
-    descricaoPedido.innerHTML += `<p>${qtdCinnamon.value}x -- ${comidas[2].nome} -- R$${precoComida.toFixed(2)}</p>`
-    soma += precoComida
-    totalPedido.value = `R$${soma.toFixed(2)}`
+        descricaoPedido.innerHTML += `<p>${qtdCinnamon.value}x -- ${comidas[2].nome} -- R$${precoComida.toFixed(2)}</p>`
+        soma += precoComida
+        totalPedido.value = `R$${soma.toFixed(2)}`         
+    }else if(qtdCinnamon.value == '0'){alert('Nenhum item foi adicionado ao carrinho.')}  
 })
 
 bolo.addEventListener('click', ()=> {
-    precoComida = qtdBolo.value * comidas[3].valor
+    if(qtdBolo.value != '0'){
+        precoComida = qtdBolo.value * comidas[3].valor
 
-    descricaoPedido.innerHTML += `<p>${qtdBolo.value}x -- ${comidas[3].nome} -- R$${precoComida.toFixed(2)}</p>`
-    soma += precoComida
-    totalPedido.value = `R$${soma.toFixed(2)}`
+        descricaoPedido.innerHTML += `<p>${qtdBolo.value}x -- ${comidas[3].nome} -- R$${precoComida.toFixed(2)}</p>`
+        soma += precoComida
+        totalPedido.value = `R$${soma.toFixed(2)}`       
+    }else if(qtdBolo.value == '0'){alert('Nenhum item foi adicionado ao carrinho.')} 
 })
 
 paoDeQueijo.addEventListener('click', ()=> {
-    precoComida = qtdPao.value * comidas[4].valor
+    if(qtdPao.value != '0'){
+        precoComida = qtdPao.value * comidas[4].valor
 
-    descricaoPedido.innerHTML += `<p>${qtdPao.value}x -- ${comidas[4].nome} -- R$${precoComida.toFixed(2)}</p>`
-    soma += precoComida
-    totalPedido.value = `R$${soma.toFixed(2)}`
+        descricaoPedido.innerHTML += `<p>${qtdPao.value}x -- ${comidas[4].nome} -- R$${precoComida.toFixed(2)}</p>`
+        soma += precoComida
+        totalPedido.value = `R$${soma.toFixed(2)}`       
+    }else if(qtdPao.value == '0'){alert('Nenhum item foi adicionado ao carrinho.')}
 })
 
 coxinha.addEventListener('click', ()=> {
-    precoComida = qtdCoxinha.value * comidas[5].valor
+    if(qtdCoxinha.value != '0'){
+        precoComida = qtdCoxinha.value * comidas[5].valor
 
-    descricaoPedido.innerHTML += `<p>${qtdCoxinha.value}x -- ${comidas[5].nome} -- R$${precoComida.toFixed(2)}</p>`
-    soma += precoComida
-    totalPedido.value = `R$${soma.toFixed(2)}`
+        descricaoPedido.innerHTML += `<p>${qtdCoxinha.value}x -- ${comidas[5].nome} -- R$${precoComida.toFixed(2)}</p>`
+        soma += precoComida
+        totalPedido.value = `R$${soma.toFixed(2)}`       
+    }else if(qtdCoxinha.value == '0'){alert('Nenhum item foi adicionado ao carrinho.')}
 })
 
 quiche.addEventListener('click', ()=> {
-    precoComida = qtdQuiche.value * comidas[6].valor
+    if(qtdQuiche.value != '0'){
+        precoComida = qtdQuiche.value * comidas[6].valor
 
-    descricaoPedido.innerHTML += `<p>${qtdQuiche.value}x -- ${comidas[6].nome} -- R$${precoComida.toFixed(2)}</p>`
-    soma += precoComida
-    totalPedido.value = `R$${soma.toFixed(2)}`
+        descricaoPedido.innerHTML += `<p>${qtdQuiche.value}x -- ${comidas[6].nome} -- R$${precoComida.toFixed(2)}</p>`
+        soma += precoComida
+        totalPedido.value = `R$${soma.toFixed(2)}`      
+    }else if(qtdQuiche.value == '0'){alert('Nenhum item foi adicionado ao carrinho.')}
 })
 
 queijoQuente.addEventListener('click', ()=> {
-    precoComida = qtdQueijo.value * comidas[7].valor
+    if(qtdQueijo.value != '0'){
+        precoComida = qtdQueijo.value * comidas[7].valor
 
-    descricaoPedido.innerHTML += `<p>${qtdQueijo.value}x -- ${comidas[7].nome} -- R$${precoComida.toFixed(2)}</p>`
-    soma += precoComida
-    totalPedido.value = `R$${soma.toFixed(2)}`
+        descricaoPedido.innerHTML += `<p>${qtdQueijo.value}x -- ${comidas[7].nome} -- R$${precoComida.toFixed(2)}</p>`
+        soma += precoComida
+        totalPedido.value = `R$${soma.toFixed(2)}`      
+    }else if(qtdQueijo.value == '0'){alert('Nenhum item foi adicionado ao carrinho.')}
 })
 
 cafe.addEventListener('click', ()=> {
-    precoComida = qtdCafe.value * comidas[8].valor
+    if(qtdCafe.value != '0'){
+        if(chantillyCafe.checked){
+            precoComida = qtdCafe.value * (comidas[8].valor + 2.2)
+            descricaoPedido.innerHTML += `<p>${qtdCafe.value}x -- ${comidas[8].nome} ${comidas[16].nome} -- R$${precoComida.toFixed(2)}</p>`
+        }else{
+            precoComida = qtdCafe.value * comidas[8].valor
+            descricaoPedido.innerHTML += `<p>${qtdCafe.value}x -- ${comidas[8].nome} -- R$${precoComida.toFixed(2)}</p>`
+        }
 
-    descricaoPedido.innerHTML += `<p>${qtdCafe.value}x -- ${comidas[8].nome} -- R$${precoComida.toFixed(2)}</p>`
-    soma += precoComida
-    totalPedido.value = `R$${soma.toFixed(2)}`
+        soma += precoComida
+        totalPedido.value = `R$${soma.toFixed(2)}`     
+    }else if(qtdCafe.value == '0'){alert('Nenhum item foi adicionado ao carrinho.')}
 })
 
 cappuccino.addEventListener('click', ()=> {
-    precoComida = qtdCappuccino.value * comidas[9].valor
+    if(qtdCappuccino.value != '0'){
+        if(chantillyCappuccino.checked){
+            precoComida = qtdCappuccino.value * (comidas[9].valor + 2.2)
+            descricaoPedido.innerHTML += `<p>${qtdCappuccino.value}x -- ${comidas[9].nome} ${comidas[16].nome} -- R$${precoComida.toFixed(2)}</p>`
+        }else{
+            precoComida = qtdCappuccino.value * comidas[9].valor
+            descricaoPedido.innerHTML += `<p>${qtdCappuccino.value}x -- ${comidas[9].nome} -- R$${precoComida.toFixed(2)}</p>`
+        }
 
-    descricaoPedido.innerHTML += `<p>${qtdCappuccino.value}x -- ${comidas[9].nome} -- R$${precoComida.toFixed(2)}</p>`
-    soma += precoComida
-    totalPedido.value = `R$${soma.toFixed(2)}`
+        soma += precoComida
+        totalPedido.value = `R$${soma.toFixed(2)}` 
+    }else if(qtdCappuccino.value == '0'){alert('Nenhum item foi adicionado ao carrinho.')}
 })
 
 chocolateQuente.addEventListener('click', ()=> {
-    precoComida = qtdChocolate.value * comidas[10].valor
+    if(qtdChocolate.value != '0'){
+        if(chantillyChocolate.checked){
+            precoComida = qtdChocolate.value * (comidas[10].valor + 2.2)
+            descricaoPedido.innerHTML += `<p>${qtdChocolate.value}x -- ${comidas[10].nome} ${comidas[16].nome} -- R$${precoComida.toFixed(2)}</p>`
+        }else{
+            precoComida = qtdChocolate.value * comidas[10].valor
+            descricaoPedido.innerHTML += `<p>${qtdChocolate.value}x -- ${comidas[10].nome} -- R$${precoComida.toFixed(2)}</p>`
+        }
 
-    descricaoPedido.innerHTML += `<p>${qtdChocolate.value}x -- ${comidas[10].nome} -- R$${precoComida.toFixed(2)}</p>`
-    soma += precoComida
-    totalPedido.value = `R$${soma.toFixed(2)}`
+        soma += precoComida
+        totalPedido.value = `R$${soma.toFixed(2)}`
+    }else if(qtdChocolate.value == '0'){alert('Nenhum item foi adicionado ao carrinho.')}
 })
 
 cha.addEventListener('click', ()=> {
     if(camomila.checked){
-        escolhidoCha = opcoesCha[0].nome
+        escolhidoCha = opcoes[0].nome
     }else if(frutas.checked){
-        escolhidoCha = opcoesCha[1].nome
+        escolhidoCha = opcoes[1].nome
     }else if(matte.checked){
-        escolhidoCha = opcoesCha[2].nome
+        escolhidoCha = opcoes[2].nome
     }else if(preto.checked){
-        escolhidoCha = opcoesCha[3].nome
+        escolhidoCha = opcoes[3].nome
     }
-    precoComida = qtdCha.value * comidas[11].valor
 
-    descricaoPedido.innerHTML += `<p>${qtdCha.value}x -- ${comidas[11].nome} ${escolhidoCha} -- R$${precoComida.toFixed(2)}</p>`
-    soma += precoComida
-    totalPedido.value = `R$${soma.toFixed(2)}`
-})
+    if(qtdCha.value != '0'){
+        precoComida = qtdCha.value * comidas[11].valor
 
-chantilly.addEventListener('click', ()=> {
-    precoComida = qtdChantilly.value * comidas[12].valor
-
-    descricaoPedido.innerHTML += `<p>${qtdChantilly.value}x -- ${comidas[12].nome} -- R$${precoComida.toFixed(2)}</p>`
-    soma += precoComida
-    totalPedido.value = `R$${soma.toFixed(2)}`
+        descricaoPedido.innerHTML += `<p>${qtdCha.value}x -- ${comidas[11].nome} ${escolhidoCha} -- R$${precoComida.toFixed(2)}</p>`
+        soma += precoComida
+        totalPedido.value = `R$${soma.toFixed(2)}`
+    }else if(qtdCha.value == '0'){alert('Nenhum item foi adicionado ao carrinho.')}
 })
 
 aguaSGas.addEventListener('click', ()=> {
-    precoComida = qtdAgua.value * comidas[13].valor
+    if(qtdAgua.value != '0'){
+        precoComida = qtdAgua.value * comidas[12].valor
 
-    descricaoPedido.innerHTML += `<p>${qtdAgua.value}x -- ${comidas[13].nome} -- R$${precoComida.toFixed(2)}</p>`
-    soma += precoComida
-    totalPedido.value = `R$${soma.toFixed(2)}`
+        descricaoPedido.innerHTML += `<p>${qtdAgua.value}x -- ${comidas[12].nome} -- R$${precoComida.toFixed(2)}</p>`
+        soma += precoComida
+        totalPedido.value = `R$${soma.toFixed(2)}`
+    }else if(qtdAgua.value == '0'){alert('Nenhum item foi adicionado ao carrinho.')}
 })
 
 aguaCGas.addEventListener('click', ()=> {
-    precoComida = qtdGas.value * comidas[14].valor
+    if(qtdGas.value != '0'){
+        precoComida = qtdGas.value * comidas[13].valor
 
-    descricaoPedido.innerHTML += `<p>${qtdGas.value}x -- ${comidas[14].nome} -- R$${precoComida.toFixed(2)}</p>`
-    soma += precoComida
-    totalPedido.value = `R$${soma.toFixed(2)}`
+        descricaoPedido.innerHTML += `<p>${qtdGas.value}x -- ${comidas[13].nome} -- R$${precoComida.toFixed(2)}</p>`
+        soma += precoComida
+        totalPedido.value = `R$${soma.toFixed(2)}`
+    }else if(qtdGas.value == '0'){alert('Nenhum item foi adicionado ao carrinho.')}
 })
 
 h2o.addEventListener('click', ()=> {
-    precoComida = qtdh2o.value * comidas[15].valor
+    if(limaoH2o.checked){
+        escolhidoH2o = opcoes[4].nome
+    }else if(limoneto.checked){
+        escolhidoH2o = opcoes[5].nome
+    }else if((limaoH2o.checked = false) && (limoneto.checked = false)){alert('Selecione uma das opções.')}
 
-    descricaoPedido.innerHTML += `<p>${qtdh2o.value}x -- ${comidas[15].nome} -- R$${precoComida.toFixed(2)}</p>`
-    soma += precoComida
-    totalPedido.value = `R$${soma.toFixed(2)}`
+    if(qtdH2o.value != '0'){
+        precoComida = qtdH2o.value * comidas[14].valor
+
+        descricaoPedido.innerHTML += `<p>${qtdH2o.value}x -- ${comidas[14].nome} ${escolhidoH2o} -- R$${precoComida.toFixed(2)}</p>`
+        soma += precoComida
+        totalPedido.value = `R$${soma.toFixed(2)}`
+    }else if(qtdH2o.value == '0'){alert('Nenhum item foi adicionado ao carrinho.')}
 })
 
 suco.addEventListener('click', ()=> {
-    precoComida = qtdSuco.value * comidas[16].valor
+    if(abacaxi.checked){
+        escolhidoSuco = opcoes[6].nome
+    }else if(hortela.checked){
+        escolhidoSuco = opcoes[7].nome
+    }else if(laranja.checked){
+        escolhidoSuco = opcoes[8].nome
+    }else if(limaoSuco.checked){
+        escolhidoSuco = opcoes[9].nome
+    }
 
-    descricaoPedido.innerHTML += `<p>${qtdSuco.value}x -- ${comidas[16].nome} -- R$${precoComida.toFixed(2)}</p>`
-    soma += precoComida
-    totalPedido.value = `R$${soma.toFixed(2)}`
+    if(qtdSuco.value != '0'){
+        precoComida = qtdSuco.value * comidas[15].valor
+
+        descricaoPedido.innerHTML += `<p>${qtdSuco.value}x -- ${comidas[15].nome} ${escolhidoSuco} -- R$${precoComida.toFixed(2)}</p>`
+        soma += precoComida
+        totalPedido.value = `R$${soma.toFixed(2)}`
+    }else if(qtdSuco.value == '0'){alert('Nenhum item foi adicionado ao carrinho.')}
 })

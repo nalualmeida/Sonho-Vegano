@@ -14,8 +14,12 @@
 
 body{
     background-image: url(img/fundo.png);
+    background-attachment: fixed;
     font-family: var(--fonte-principal);
     padding: 6vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    height: fit-content;
 }
 
 header{
@@ -40,22 +44,33 @@ main{
     margin-top: 8vh;
     display: flex;
     flex-direction: row;
-    gap: 7vh;
+    gap: 4vh;
     justify-content: center;
     z-index: -1;
 }
 
+.esquerda{
+    display: flex;
+    gap: 2vh;
+}
+
 section.cardapio{
     display: flex;
-    width: 65%;
+    width: 666px;
     flex-direction: row;
-    justify-content: baseline;
     gap: 4vh;
+}
+
+a.voltarAoTopo{
+    height: 40px;
+    width: 40px;
+    position: sticky;
+    top: 35%;
 }
 
 button#botaoEsquerdo, button#botaoDireito{
     height: 40px;
-    width: 65px;
+    width: 40px;
     background-color: var(--laranja);
     border: 3.5px solid var(--vermelho-terra);
     border-radius: 20vh;
@@ -63,7 +78,7 @@ button#botaoEsquerdo, button#botaoDireito{
     font-weight: bold;
     font-size: medium;
     text-align: center;
-    cursor: pointer;
+    cursor: pointer;    
     transition: 0.5s;
 }
 
@@ -83,8 +98,8 @@ button#botaoEsquerdo:hover, button#botaoDireito:hover{
 }
 
 .pagina{
-    width: 86.3vh;
-    height: fit-content;
+    width: 666px;
+    height: 1050px;
     box-sizing: border-box;
     border: 8px solid var(--laranja);
     border-radius: 2vh;
@@ -93,15 +108,30 @@ button#botaoEsquerdo:hover, button#botaoDireito:hover{
     flex-direction: column;
     gap: 2vh;
     background-color: var(--rosa-claro);
+    overflow-y: auto;
 }
 
-#lanches{
-    margin-right: 4vh;
+.pagina::-webkit-scrollbar, body::-webkit-scrollbar {
+    width: 2.2vh;               /* width of the entire scrollbar */
+  }
+  
+.pagina::-webkit-scrollbar-track, body::-webkit-scrollbar-track{
+    background: var(--laranja-escuro);        /* color of the tracking area */
+  }
+  
+.pagina::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb{
+    background-color: var(--vermelho-terra);    /* color of the scroll thumb */
+    border-radius: 10px;       /* roundness of the scroll thumb */
+    border: 4px solid var(--laranja-escuro);  /* creates padding around scroll thumb */
+  }
+
+/* #lanches{
+    margin-right: 25px;
 }
 
 #bebidas{
-    margin-left: 4vh;
-}
+    margin-left: 25px;
+} */
 
 .pagina .lanche{
     display: flex;
@@ -113,6 +143,17 @@ button#botaoEsquerdo:hover, button#botaoDireito:hover{
 
 .lanche .descrição{
     width: 80%;
+}
+
+#lanche1 .descrição h2{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+#lanche1 .descrição img#estrela{
+    height: 30px;
 }
 
 .descrição p{
@@ -132,7 +173,6 @@ button#botaoEsquerdo:hover, button#botaoDireito:hover{
     margin-top: -15px;
     display: flex;
     flex-direction: column;
-    gap: 7px;
 }
 
 .lanche .quantidade .numero{
@@ -145,7 +185,7 @@ button#botaoEsquerdo:hover, button#botaoDireito:hover{
 
 .numero p.visor{
     font-size: large;
-    margin: 8px;
+    margin: 5px;
 }
 
 .quantidade input.qtd{
@@ -167,8 +207,7 @@ input.qtd::-webkit-slider-thumb{
 }
 
 button.adicionar{
-    width: 90px;
-    height: 30px;
+    padding: 1.2vh;
     background-color: var(--amarelo);
     border-radius: 20vh;
     border: 2px solid var(--azul-claro);
@@ -230,7 +269,7 @@ button.adicionar:hover{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     gap: 2vh;
 }
 
@@ -245,8 +284,8 @@ button.adicionar:hover{
     margin-bottom: -1px;
 }
 
-.bebida #adicionar{
-    margin-bottom: 0;
+#bebida1 .inputRadio, #bebida2 .inputRadio, #bebida3 .inputRadio{
+    margin-top: 20px;
 }
 
 .inputRadio{
@@ -254,6 +293,42 @@ button.adicionar:hover{
     flex-direction: column;
     gap: 3px;
 }
+
+input[type='checkbox'] {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+  }
+  
+  input[type='checkbox'] + label.label {
+    position: relative;
+    cursor: pointer;
+    padding-left: 20px;
+  }
+ 
+  input[type=checkbox] + label.label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 20vh;
+    border: solid 2px var(--laranja-escuro);
+    background-color: var(--laranja);
+    vertical-align: bottom;
+  }
+  
+  input[type=checkbox]:checked + label::after {
+    content: '';
+    background-color: var(--rosa-escuro);
+    width: 10px;
+    height: 10px;
+    border-radius: 20vh;
+    position: absolute;
+    left: 3px;
+    bottom: 3px;
+  }
 
 input[type='radio'] {
     position: absolute;
@@ -292,16 +367,24 @@ input[type='radio'] {
   }
 
 section.carrinho{
-    width: 35%;
+    width: 300px;
     height: fit-content;
     border: 8px solid var(--amarelo);
     border-radius: 2vh;
     padding: 3vh;
     background-color: var(--rosa-claro);
+    position: sticky;
+    top: 15%;
 }
 
 section.carrinho h4{
     margin-top: 4vh;
+}
+
+section.carrinho p{
+    margin: 0;
+    margin-top: 7px;
+    margin-bottom: 7px;
 }
 
 .totalPedido{
@@ -311,7 +394,8 @@ section.carrinho h4{
 }
 
 .totalPedido input{
-    width: 120px;
+    border: 1px solid;
+    width: 90px;
     background: none;
     border: none;
     font-family: var(--fonte-principal);
@@ -346,10 +430,11 @@ button#abrirModal:hover{
     height: 50px;
     display: block;
     margin: auto;
+    margin-top: 0;
     margin-bottom: 2vh;
 }
 
-#modalAlert{
+/* #modalAlert{
     border: 8px solid var(--rosa-escuro);
     border-radius: 2vh;
     background-color: var(--rosa-claro);
@@ -368,7 +453,7 @@ button#abrirModal:hover{
     display: block;
     margin: auto;
     margin-top: 1vh;
-}
+} */
 
 #modal{
     border: 8px solid var(--rosa-escuro);
@@ -379,6 +464,7 @@ button#abrirModal:hover{
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
 .logoModal{
@@ -427,14 +513,14 @@ button#fechar:hover, button#fecharAlert:hover{
     z-index: 6;
 }
 
-#modalAlert{
+/* #modalAlert{
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 11;
     pointer-events: all;
-}
+} */
 
 #fade{
     position: fixed;
@@ -446,7 +532,7 @@ button#fechar:hover, button#fecharAlert:hover{
     z-index: 5;
 }
 
-#fadeAlert{
+/* #fadeAlert{
     position: fixed;
     top: 0;
     left: 0;
@@ -455,7 +541,7 @@ button#fechar:hover, button#fecharAlert:hover{
     background-color: #ab2e259f;
     z-index: 10;
     pointer-events: all;
-}
+} */
 
 #modal.hide, #modalAlert.hide{
     top: 0;
@@ -464,4 +550,252 @@ button#fechar:hover, button#fecharAlert:hover{
 #modal.hide, #fade.hide, #modalAlert.hide, #fadeAlert.hide{
     opacity: 0;
     pointer-events: none;
+}
+
+/* MEDIA QUERY */
+
+@media screen and (max-width: 1215px){
+    main{
+        display: flex;
+        flex-direction: column;
+        gap: 4vh;
+        align-items: center;
+    }
+
+    .pagina{
+        height: 700px;
+    }
+
+    section.carrinho{
+        width: 450px;
+
+    }
+}
+
+@media screen and (max-width: 860px){
+    section.cardapio{
+        width: 540px;
+    }
+
+    .pagina{
+        width: 540px;
+    }
+
+    section.carrinho{
+        width: 490px;
+    }
+}
+
+@media screen and (max-width: 735px){
+    header img#cardapioImg{
+        width: 45%;
+        height: 10.35%;
+    }
+
+    header img#logo{
+        width: 7em;
+    }
+}
+
+@media screen and (max-width: 665px){
+    section.cardapio{
+        width: 440px;
+    }
+
+    .pagina{
+        width: 440px;
+    }
+
+    section.carrinho{
+        width: 390px;
+    }
+}
+
+@media screen and (max-width: 580px){
+    body{
+        padding: 0;
+    }
+
+    header img#cardapioImg{
+        width: 55%;
+        height: 12.65%;
+    }
+
+    button#botaoEsquerdo, button#botaoDireito{
+        height: 32px;
+        width: 32px;
+    }
+
+    .imgSection{
+        height: 7vh;
+    } 
+
+    section.cardapio{
+        width: 360px;
+    }
+
+    .pagina{
+        width: 360px;
+    }
+
+    .pagina .lanche{
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .lanche .descrição{
+        width: 100%;
+    }
+
+    .lanche .preço{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 3vh;
+        width: 100%;
+    }
+
+    #bebidas .temperatura{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
+
+    .quentes{
+        width: 100%;
+    }
+    
+    .frias{
+        width: 100%;
+    }
+
+    section.carrinho{
+        width: 310px;
+    }
+}
+
+@media screen and (max-width: 490px){
+    header img#cardapioImg{
+        width: 44%;
+        height: 10.1%;
+    }
+    
+    section.cardapio{
+        width: 260px;
+    }
+
+    .pagina{
+        width: 260px;
+        padding: 1.5vh;
+    }
+
+    .descrição h2{
+        font-size: large;
+    }
+
+    .descrição p{
+        font-size: medium;
+    }
+
+    .preço h3{
+        font-size: medium;
+        margin-right: -4px;
+    }
+
+    .quantidade p{
+        font-size: small;
+    }
+
+    .lanche .quantidade .numero{
+        margin-top: -13px;
+    }
+
+    .numero p.visor{
+        font-size: medium;
+        margin: 5px;
+    }
+
+    .quantidade input.qtd{
+        width: 60px;
+    }
+
+    input.qtd::-webkit-slider-thumb{
+        width: 10px;
+        height: 10px;
+    }
+
+    button.adicionar{
+        padding: 0.7vh;
+        font-size: x-small;
+    }
+
+    .titulo-preço h2{
+        font-size: large;
+    }
+    
+    .titulo-preço h3{
+        font-size: medium;
+    }
+
+    input[type=checkbox] + label.label::before {
+        width: 9px;
+        height: 9px;
+    }
+
+    input[type=checkbox]:checked + label::after {
+        width: 7px;
+        height: 7px;
+    }
+
+    input[type=radio] + label.label::before {
+        width: 9px;
+        height: 9px;
+      }
+      
+      input[type=radio]:checked + label::after {
+        width: 7px;
+        height: 7px;
+      }
+
+    label.label{
+        font-size: small;
+    }
+
+    #aviso{
+        font-size: small;
+        font-weight: bold;
+    }
+
+    .imgSection{
+        width: 80%;
+        height: 18.4%;
+    } 
+
+    .pagina::-webkit-scrollbar{
+        width: 1.5vh;
+      }
+
+      .pagina::-webkit-scrollbar-thumb{
+        border: 2px solid var(--laranja-escuro);
+      }
+
+    section.carrinho{
+        width: 210px;
+    }
+}
+
+@media screen and (max-width: 425px){
+    .esquerda{
+        gap: 1vh;
+    }
+}
+
+@media screen and (max-width: 896px) and (max-height: 414px){
+    #modal{
+        width: 60%;
+        max-height: 88%;
+    }
 }

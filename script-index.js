@@ -1,7 +1,8 @@
 // JS DO CARROSSEL AUTOMÁTICO
 
-var slides = document.querySelector('.slides')
+var slides = document.getElementById('slides')
 var slide = document.querySelectorAll('.slides .slide')
+var direita = document.getElementById('direita')
 
 var slideAtual = 0
 
@@ -22,7 +23,7 @@ function carrosselAutomatico(){
         indicador2.style.backgroundColor = 'white' 
     }  
 
-    slides.style.transform = `translateX(${-slideAtual * 455}px)`  
+    slides.style.transform = `translateX(${-slideAtual * direita.offsetWidth}px)`  
 }
 
 setInterval(carrosselAutomatico, 5000)
